@@ -8,16 +8,37 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 public class CaffeineTile extends TileService {
-    SharedPreferences sp = getSharedPreferences("HToolbox", MODE_PRIVATE);
 
     public void onStartListening() {
         super.onStartListening();
 
+        SharedPreferences sp = getSharedPreferences("HToolbox", MODE_PRIVATE);
+        Tile tile = getQsTile();
+        if (!Settings.System.canWrite(this)) {
+            tile.setLabel(getText(R.string.permission_required));
+            tile.setState(Tile.STATE_INACTIVE);
+        } else {
+            try {
+                int timeout = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT);
+                int base_timeout = sp.getInt("base_timeout", 2 * 60 * 1000);
+                if (timeout == base_timeout)
+                    tile.setState(Tile.STATE_INACTIVE);
+                else tile.setState(Tile.STATE_ACTIVE);
+                if (timeout < 60000)
+                    tile.setLabel(getString(R.string.timeout) + timeout / 1000 + "s");
+                else tile.setLabel(getString(R.string.timeout) + timeout / 60 / 1000 + "min");
+            } catch (Settings.SettingNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        tile.updateTile();
     }
 
     public void onClick() {
         super.onClick();
 
+        SharedPreferences sp = getSharedPreferences("HToolbox", MODE_PRIVATE);
         Tile tile = getQsTile();
         if (!Settings.System.canWrite(this)) {
             tile.setLabel(getText(R.string.permission_required));
@@ -46,6 +67,31 @@ public class CaffeineTile extends TileService {
 
                 }
                 timeout = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT);
+                if (timeout < 60000)
+                    tile.setLabel(getString(R.string.timeout) + timeout / 1000 + "s");
+                else tile.setLabel(getString(R.string.timeout) + timeout / 60 / 1000 + "min");
+            } catch (Settings.SettingNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        tile.updateTile();
+    }
+
+    public void onStopListening() {
+        super.onStopListening();
+        SharedPreferences sp = getSharedPreferences("HToolbox", MODE_PRIVATE);
+        Tile tile = getQsTile();
+        if (!Settings.System.canWrite(this)) {
+            tile.setLabel(getText(R.string.permission_required));
+            tile.setState(Tile.STATE_INACTIVE);
+        } else {
+            try {
+                int timeout = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT);
+                int base_timeout = sp.getInt("base_timeout", 2 * 60 * 1000);
+                if (timeout == base_timeout)
+                    tile.setState(Tile.STATE_INACTIVE);
+                else tile.setState(Tile.STATE_ACTIVE);
                 if (timeout < 60000)
                     tile.setLabel(getString(R.string.timeout) + timeout / 1000 + "s");
                 else tile.setLabel(getString(R.string.timeout) + timeout / 60 / 1000 + "min");
