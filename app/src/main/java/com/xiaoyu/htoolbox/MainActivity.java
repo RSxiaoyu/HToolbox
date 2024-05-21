@@ -1,5 +1,6 @@
 package com.xiaoyu.htoolbox;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtn1Clicked(View view) {
-//        Intent intent = new Intent(this, ConfigureActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, ConfigurationActivity.class);
+        startActivity(intent);
     }
 }

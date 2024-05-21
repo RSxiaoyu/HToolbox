@@ -80,7 +80,7 @@ public class CaffeineTile extends TileService {
 
     public void onStopListening() {
         super.onStopListening();
-        SharedPreferences sp = getSharedPreferences("HToolbox", MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences((String) getText(R.string.dataset), MODE_PRIVATE);
         Tile tile = getQsTile();
         if (!Settings.System.canWrite(this)) {
             tile.setLabel(getText(R.string.permission_required));

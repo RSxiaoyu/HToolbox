@@ -18,6 +18,11 @@
         android:theme="@style/Base.Theme.HToolbox"
         tools:targetApi="31">
         <activity
+            android:name=".ConfigurationActivity"
+            android:exported="false"
+            android:label="配置文件"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
