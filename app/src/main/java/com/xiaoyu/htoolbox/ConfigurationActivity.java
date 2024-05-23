@@ -16,7 +16,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
-        SharedPreferences sp = getSharedPreferences(getString(R.string.dataset), MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         int base_timeout = sp.getInt("base_timeout", 2 * 60 * 1000);
         int extend_timeout = sp.getInt("extend_timeout", 10 * 60 * 1000);
 

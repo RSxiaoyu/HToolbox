@@ -11,24 +11,7 @@ public class AutoBrightnessTile extends TileService {
 
     public void onStartListening() {
         super.onStartListening();
-        Tile tile = getQsTile();
-        if (!Settings.System.canWrite(this)) {
-            tile.setLabel(getText(R.string.permission_required));
-            tile.setState(Tile.STATE_INACTIVE);
-        } else {
-            int mode = Settings.System.getInt(getContentResolver(),
-                    Settings.System.SCREEN_BRIGHTNESS_MODE,
-                    Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
-            );
-            if (mode == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
-                tile.setLabel(getText(R.string.autobrightness_on));
-                tile.setState(Tile.STATE_ACTIVE);
-            } else {
-                tile.setLabel(getText(R.string.autobrightness_off));
-                tile.setState(Tile.STATE_INACTIVE);
-            }
-        }
-        tile.updateTile();
+        updateTile();
     }
 
     public void onClick() {
@@ -68,6 +51,11 @@ public class AutoBrightnessTile extends TileService {
 
     public void onStopListening() {
         super.onStopListening();
+        updateTile();
+
+    }
+
+    public void updateTile() {
         Tile tile = getQsTile();
         if (!Settings.System.canWrite(this)) {
             tile.setLabel(getText(R.string.permission_required));
@@ -87,5 +75,4 @@ public class AutoBrightnessTile extends TileService {
         }
         tile.updateTile();
     }
-
 }

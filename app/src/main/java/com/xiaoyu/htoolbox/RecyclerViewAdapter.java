@@ -24,7 +24,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter(Context context, List<Item> items) {
         this.items = items;
         this.inflater = LayoutInflater.from(context);
-        this.sharedPreferences = context.getSharedPreferences((String) context.getText(R.string.dataset), Context.MODE_PRIVATE);
+        this.sharedPreferences = context.getSharedPreferences((String) context.getText(R.string.app_name), Context.MODE_PRIVATE);
     }
 
     @Override

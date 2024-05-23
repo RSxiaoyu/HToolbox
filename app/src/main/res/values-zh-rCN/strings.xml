@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HToolbox</string>
-    <string name="tile">自动亮度</string>
-    <string name="test">测试</string>
     <string name="permission_required">权限未授予</string>
     <string name="autobrightness_on">自动亮度\n开</string>
     <string name="autobrightness_off">自动亮度\n关</string>
