@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="permission_required">权限未授予</string>
-    <string name="autobrightness_on">自动亮度\n开</string>
-    <string name="autobrightness_off">自动亮度\n关</string>
-    <string name="autobrightness">自动亮度</string>
+    <string name="tile_permission_required">权限未授予</string>
+    <string name="auto_brightness_on">自动亮度\n开</string>
+    <string name="auto_brightness_off">自动亮度\n关</string>
+    <string name="auto_brightness">自动亮度</string>
     <string name="caffeine">咖啡因</string>
     <string name="timeout">休眠时间\n</string>
+    <string name="permission_not_granted">权限未授予！</string>
+    <string name="permission_granted">权限已授予！</string>
+    <string name="configuration">配置文件</string>
 </resources>

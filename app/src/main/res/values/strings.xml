@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name" translatable="false">HToolbox</string>
-    <string name="permission_required">Permission Required</string>
-    <string name="autobrightness_on">Autobrightness\n0N</string>
-    <string name="autobrightness_off">Autobrightness\nOFF</string>
-    <string name="autobrightness">Autobrightness</string>
+    <string name="tile_permission_required">Permission Required</string>
+    <string name="auto_brightness_on">Autobrightness\n0N</string>
+    <string name="auto_brightness_off">Autobrightness\nOFF</string>
+    <string name="auto_brightness">Autobrightness</string>
     <string name="caffeine">Caffeine</string>
     <string name="timeout">Timeout</string>
+    <string name="permission_not_granted">Permission not granted!</string>
+    <string name="permission_granted">Permission granted!</string>
+    <string name="configuration">Configuration</string>
 </resources>

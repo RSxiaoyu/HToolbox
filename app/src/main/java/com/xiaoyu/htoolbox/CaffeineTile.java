@@ -20,7 +20,7 @@ public class CaffeineTile extends TileService {
         SharedPreferences sp = getSharedPreferences("HToolbox", MODE_PRIVATE);
         Tile tile = getQsTile();
         if (!Settings.System.canWrite(this)) {
-            tile.setLabel(getText(R.string.permission_required));
+            tile.setLabel(getText(R.string.tile_permission_required));
             tile.setState(Tile.STATE_INACTIVE);
             tile.updateTile();
             Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
@@ -70,7 +70,7 @@ public class CaffeineTile extends TileService {
         SharedPreferences sp = getSharedPreferences((String) getText(R.string.app_name), MODE_PRIVATE);
         Tile tile = getQsTile();
         if (!Settings.System.canWrite(this)) {
-            tile.setLabel(getText(R.string.permission_required));
+            tile.setLabel(getText(R.string.tile_permission_required));
             tile.setState(Tile.STATE_INACTIVE);
         } else {
             try {
